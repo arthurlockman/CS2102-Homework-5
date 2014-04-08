@@ -1,4 +1,23 @@
 Arthur Lockman | ajlockman | Section D02
 Erin Ferguson | eeferguson | Section D02
 
-1.
+1. To accomplish this goal, we created the IReportList interface, which is a container for all types of weather reports.
+   We then implemented this interface in WeatherReportList, where the weather data is actually stored and manipulated.
+   In the implementation in WeatherMonitor, the user only has access to the IReportList and not to the underlying
+   LinkedList data structure, thereby protecting the underlying data.
+
+   To change from using a LinkedList to a weatherGlob, all one would have to do would be to implement IReportList using
+   the weatherGlob storage structure instead of the LinkedList that we use in WeatherReportList. No existing files would
+   have to be changed to accomplish this; one would simply have to create a new class that implements IReportList and
+   fill in the methods to properly interact with the weatherGlob. One would also have to change line 5 of WeatherMonitor
+   to private IReportList reports = new WeatherGlobReportList() instead of
+   private IReportList reports = new WeatherReportList().
+
+2. Our WeatherMonitor object doesn't actually provide any methods for modifying existing weather data. It only provides
+   means of reading the data and adding new daily reports, but not any means of changing existing data. We accomplish
+   this by making the weather report list we use private, and not providing getters and setters for its data.
+   Additionally the IReportList interface doesn't provide means of editing data, only of adding new data. That way the
+   previously stored data can't be tampered with in any way.
+
+3. I don't believe there are aspects of the code that we would like to clean up but don't yet know how. We are satisfied
+   with our code from a design standpoint.

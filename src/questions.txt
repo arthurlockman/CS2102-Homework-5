@@ -21,4 +21,3 @@ Erin Ferguson | eeferguson | Section D02
 
 3. I don't believe there are aspects of the code that we would like to clean up but don't yet know how. We are satisfied
    with our code from a design standpoint.
-   

@@ -23,13 +23,17 @@ public class WeatherReportList implements IReportList
 	@Override
 	public int getMonthlyHigh(int month, int year)
 	{
-		int high = reports.getFirst().getHigh();
+		int accum = 0;
+		int count = 0;
 		for(DailyReport report : reports)
 		{
-			if (report.getHigh() > high && report.getMonth() == month && report.getYear() == year)
-				high = report.getHigh();
+			if (report.getMonth() == month && report.getYear() == year)
+			{
+				accum += report.getHigh();
+				count++;
+			}
 		}
-		return high;
+		return accum / count;
 	}
 
 	@Override
@@ -47,13 +51,17 @@ public class WeatherReportList implements IReportList
 	@Override
 	public int getMonthlyLow(int month, int year)
 	{
-		int low = reports.getFirst().getHigh();
+		int accum = 0;
+		int count = 0;
 		for(DailyReport report : reports)
 		{
-			if (report.getLow() < low)
-				low = report.getHigh();
+			if (report.getMonth() == month && report.getYear() == year)
+			{
+				accum += report.getLow();
+				count++;
+			}
 		}
-		return low;
+		return accum / count;
 	}
 
 	@Override

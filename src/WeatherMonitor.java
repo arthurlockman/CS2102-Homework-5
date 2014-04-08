@@ -9,6 +9,11 @@ public class WeatherMonitor
 
 	}
 
+	public WeatherMonitor(LinkedList<DailyReport> reports)
+	{
+		this.reports.addAll(reports);
+	}
+
 	public Integer averageHighForMonth(int month)
 	{
 		int count = 0;

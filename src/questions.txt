@@ -13,4 +13,12 @@ Erin Ferguson | eeferguson | Section D02
    to private IReportList reports = new WeatherGlobReportList() instead of
    private IReportList reports = new WeatherReportList().
 
-2. 
+2. Our WeatherMonitor object doesn't actually provide any methods for modifying existing weather data. It only provides
+   means of reading the data and adding new daily reports, but not any means of changing existing data. We accomplish
+   this by making the weather report list we use private, and not providing getters and setters for its data.
+   Additionally the IReportList interface doesn't provide means of editing data, only of adding new data. That way the
+   previously stored data can't be tampered with in any way.
+
+3. I don't believe there are aspects of the code that we would like to clean up but don't yet know how. We are satisfied
+   with our code from a design standpoint.
+   

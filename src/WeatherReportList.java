@@ -1,5 +1,9 @@
 import java.util.LinkedList;
 
+/**
+ * @author Arthur Lockman | ajlockman | CS 2102 D14 | Section D02
+ * @author Erin Ferguson | eeferguson | CS 2102 D14 | Section D02
+ */
 public class WeatherReportList implements IReportList
 {
 	private LinkedList<DailyReport> reports = new LinkedList<DailyReport>();

@@ -9,13 +9,57 @@ public class WeatherMonitor
 
 	}
 
-	public int averageHighForMonth(int month)
+	public Integer averageHighForMonth(int month)
 	{
-		return 1;
+		int count = 0;
+		int accumulator = 0;
+		for(DailyReport report : reports)
+		{
+			if(report.getMonth() == month)
+			{
+				accumulator += report.getHigh();
+				count++;
+			}
+		}
+		if (count == 0)
+			return null;
+		else
+			return accumulator / count;
 	}
 
-	public int averageLowForMonth(int month)
+	public Integer averageLowForMonth(int month)
 	{
-		return 1;
+		int count = 0;
+		int accumulator = 0;
+		for(DailyReport report : reports)
+		{
+			if(report.getMonth() == month)
+			{
+				accumulator += report.getLow();
+				count++;
+			}
+		}
+		if (count == 0)
+			return null;
+		else
+			return accumulator / count;
+	}
+
+	public void addDailyReport(Date date, LinkedList<Integer> temps)
+	{
+		int max = temps.getFirst();
+		int min = temps.getFirst();
+
+		for(Integer temp : temps)
+		{
+			if (temp > max)
+				max = temp;
+			if (temp < min)
+				min = temp;
+		}
+
+		DailyReport n = new DailyReport(date, max, min);
+
+		reports.add(n);
 	}
 }

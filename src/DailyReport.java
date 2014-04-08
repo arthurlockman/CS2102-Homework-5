@@ -1,12 +1,13 @@
 public class DailyReport
 {
 	private Date date;
-	private int temperature;
+	private int high, low;
 
-	DailyReport(Date date, int temperature)
+	DailyReport(Date date, int high, int low)
 	{
 		this.date = date;
-		this.temperature = temperature;
+		this.high = high;
+		this.low = low;
 	}
 
 	public void setDate(Date date)
@@ -14,23 +15,33 @@ public class DailyReport
 		this.date = date;
 	}
 
-	public void setTemperature(int temperature)
-	{
-		this.temperature = temperature;
-	}
-
 	public Date getDate()
 	{
 		return date;
 	}
 
-	public int getTemperature()
-	{
-		return temperature;
-	}
-
 	public int getMonth()
 	{
 		return date.getMonth();
+	}
+
+	public int getHigh()
+	{
+		return high;
+	}
+
+	public int getLow()
+	{
+		return low;
+	}
+
+	public void setHigh(int high)
+	{
+		this.high = high;
+	}
+
+	public void setLow(int low)
+	{
+		this.low = low;
 	}
 }

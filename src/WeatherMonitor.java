@@ -1,8 +1,8 @@
 import java.util.LinkedList;
 
-public class WeatherMonitor
+public class WeatherMonitor implements IWeatherMonitor
 {
-	private LinkedList<DailyReport> reports = new LinkedList<DailyReport>();
+	private IReportList reports = new WeatherReportList();
 
 	public WeatherMonitor()
 	{
@@ -11,43 +11,18 @@ public class WeatherMonitor
 
 	public WeatherMonitor(LinkedList<DailyReport> reports)
 	{
-		this.reports.addAll(reports);
+		for(DailyReport report : reports)
+			this.reports.addReport(report.getDate(), report.getHigh(), report.getLow());
 	}
 
-	public Integer averageHighForMonth(int month)
+	public Integer averageHighForMonth(int month, int year)
 	{
-		int count = 0;
-		int accumulator = 0;
-		for(DailyReport report : reports)
-		{
-			if(report.getMonth() == month)
-			{
-				accumulator += report.getHigh();
-				count++;
-			}
-		}
-		if (count == 0)
-			return null;
-		else
-			return accumulator / count;
+		return reports.getMonthlyHigh(month, year);
 	}
 
-	public Integer averageLowForMonth(int month)
+	public Integer averageLowForMonth(int month, int year)
 	{
-		int count = 0;
-		int accumulator = 0;
-		for(DailyReport report : reports)
-		{
-			if(report.getMonth() == month)
-			{
-				accumulator += report.getLow();
-				count++;
-			}
-		}
-		if (count == 0)
-			return null;
-		else
-			return accumulator / count;
+		return reports.getMonthlyLow(month, year);
 	}
 
 	public void addDailyReport(Date date, LinkedList<Integer> temps)
@@ -62,9 +37,6 @@ public class WeatherMonitor
 			if (temp < min)
 				min = temp;
 		}
-
-		DailyReport n = new DailyReport(date, max, min);
-
-		reports.add(n);
+		reports.addReport(date, max, min);
 	}
 }

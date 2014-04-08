@@ -10,11 +10,6 @@ public class DailyReport
 		this.low = low;
 	}
 
-	public void setDate(Date date)
-	{
-		this.date = date;
-	}
-
 	public Date getDate()
 	{
 		return date;
@@ -25,6 +20,16 @@ public class DailyReport
 		return date.getMonth();
 	}
 
+	public int getYear()
+	{
+		return date.getYear();
+	}
+
+	public int getDay()
+	{
+		return date.getDay();
+	}
+
 	public int getHigh()
 	{
 		return high;
@@ -33,15 +38,5 @@ public class DailyReport
 	public int getLow()
 	{
 		return low;
-	}
-
-	public void setHigh(int high)
-	{
-		this.high = high;
-	}
-
-	public void setLow(int low)
-	{
-		this.low = low;
 	}
 }

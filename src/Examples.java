@@ -5,20 +5,21 @@
 
 import tester.Tester;
 
+import java.util.LinkedList;
+
 public class Examples
 {
+	private WeatherMonitor monitor;
+
 	Examples()
 	{
-		//Constructor
-	}
+		LinkedList<DailyReport> reports = new LinkedList<DailyReport>();
+		reports.add(new DailyReport(new Date(3,24,2014), 40, 20));
+		reports.add(new DailyReport(new Date(3,20,2014), 42, 30));
+		reports.add(new DailyReport(new Date(3,12,2014), 30, 10));
+		reports.add(new DailyReport(new Date(4,20,2014), 50, 45));
+		reports.add(new DailyReport(new Date(4,21,2014), 55, 30));
 
-	/**
-	 * An example test.
-	 * @param t The tester.
-	 * @return Whether or not the test passed.
-	 */
-	boolean test1(Tester t)
-	{
-		return t.checkExpect(true, true);
+		monitor = new WeatherMonitor(reports);
 	}
 }
